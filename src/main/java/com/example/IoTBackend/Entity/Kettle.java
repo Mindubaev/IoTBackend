@@ -5,6 +5,11 @@
  */
 package com.example.IoTBackend.Entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +26,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "kettle")
 public class Kettle implements Serializable{
@@ -55,64 +64,8 @@ public class Kettle implements Serializable{
     )
     private List<Person> persons;
 
-    public Kettle() {
-    }
+    private boolean working;
 
-    public Kettle(Long id, String name, UUID secret, List<Statistic> statistics, Setting setting, List<Person> persons) {
-        this.id = id;
-        this.name = name;
-        this.secret = secret;
-        this.statistics = statistics;
-        this.setting = setting;
-        this.persons = persons;
-    }
+    private boolean disabled;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public UUID getSecret() {
-        return secret;
-    }
-
-    public List<Statistic> getStatistics() {
-        return statistics;
-    }
-
-    public Setting getSetting() {
-        return setting;
-    }
-
-    public List<Person> getPersons() {
-        return persons;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSecret(UUID secret) {
-        this.secret = secret;
-    }
-
-    public void setStatistics(List<Statistic> statistics) {
-        this.statistics = statistics;
-    }
-
-    public void setSetting(Setting setting) {
-        this.setting = setting;
-    }
-
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
-    }
-    
 }

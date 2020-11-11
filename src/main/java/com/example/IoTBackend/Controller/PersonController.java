@@ -5,6 +5,7 @@
  */
 package com.example.IoTBackend.Controller;
 
+import com.example.IoTBackend.Entity.Kettle;
 import com.example.IoTBackend.Entity.Person;
 import com.example.IoTBackend.Entity.Setting;
 import com.example.IoTBackend.Service.api.PersonService;
