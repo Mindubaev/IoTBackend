@@ -5,12 +5,9 @@
  */
 package com.example.IoTBackend.Controller;
 
-import com.example.IoTBackend.Entity.Kettle;
 import com.example.IoTBackend.Entity.Person;
-import com.example.IoTBackend.Entity.Setting;
 import com.example.IoTBackend.Service.api.PersonService;
 import com.example.IoTBackend.Validation.LoginConstraint;
-import com.example.IoTBackend.Validation.NameConstraint;
 import com.example.IoTBackend.Validation.PasswordConstraint;
 import java.util.ArrayList;
 
@@ -109,7 +106,7 @@ public class PersonController {
         }
 
         public Person toPerson(PasswordEncoder encoder) {
-            return new Person(getUsername(),encoder.encode(getPassword()),new ArrayList<>(),new ArrayList<>());
+            return new Person(getUsername(),encoder.encode(getPassword()),new ArrayList<>());
         }
 
     }

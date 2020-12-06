@@ -22,8 +22,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @AllArgsConstructor
@@ -31,8 +29,8 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "kettle")
-public class Kettle implements Serializable{
+@Table(name = "sensor")
+public class Sensor implements Serializable{
     
     @Id
     @org.springframework.data.annotation.Id
@@ -43,29 +41,17 @@ public class Kettle implements Serializable{
     
     private UUID secret;
     
-    @OneToMany(
-        mappedBy = "kettle",
-        fetch=FetchType.LAZY,
-        cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
-        orphanRemoval = true
-    )
-    private List<Statistic> statistics;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "setting_id")
-    private Setting setting;
-    
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
     )
-    @JoinTable(name = "kettle_person_relation", 
-            joinColumns = @JoinColumn(name = "kettle_id"),
+    @JoinTable(name = "sensor_person_relation",
+            joinColumns = @JoinColumn(name = "sensor_id"),
             inverseJoinColumns = @JoinColumn(name="person_id")
     )
     private List<Person> persons;
 
-    private boolean working;
+    private Integer minTemp;
 
-    private boolean disabled;
+    private Integer maxTemp;
 
 }
