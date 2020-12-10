@@ -1,0 +1,25 @@
+syntax="proto3";
+option java_multiple_files = true;
+package com.example.IoTBackend.gRPC.api;
+
+message RegRequest{
+  string secret=1;
+}
+
+message RegResponse{
+  int64 id=1;
+}
+
+message AuthRequest{
+  int64 id=1;
+  string secret=2;
+}
+
+message AuthResponse{
+  bool authorized=1;
+}
+
+service AuthService{
+  rpc registrate(RegRequest) returns (RegResponse);
+  rpc login(AuthRequest) returns (AuthResponse);
+}
