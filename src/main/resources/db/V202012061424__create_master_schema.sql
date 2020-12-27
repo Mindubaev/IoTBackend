@@ -7,8 +7,8 @@ create table sensor (
     id serial primary key,
     name varchar(20),
     secret UUID,
-    minTemp numeric(3,2),
-    maxTemp numeric(3,2)
+    minTemp integer,
+    maxTemp integer
 );
 create table sensor_person_relation (
     id serial primary key,

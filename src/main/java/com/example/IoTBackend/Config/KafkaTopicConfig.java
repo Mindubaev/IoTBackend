@@ -14,8 +14,8 @@ import java.util.Map;
 @Configuration
 public class KafkaTopicConfig {
 
-    @Value(value = "${kafka.boorstrap-server}")
-    private static String BOOTSTRAP_SERVER;
+    @Value(value = "${kafka.bootstrap-server}")
+    private String BOOTSTRAP_SERVER;
 
     @Bean
     public KafkaAdmin kafkaAdmin(){

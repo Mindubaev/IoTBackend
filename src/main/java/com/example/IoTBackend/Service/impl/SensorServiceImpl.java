@@ -1,5 +1,6 @@
 package com.example.IoTBackend.Service.impl;
 
+import com.example.IoTBackend.DTO.SensorShortInfo;
 import com.example.IoTBackend.Entity.Sensor;
 import com.example.IoTBackend.Repository.SensorRepositoty;
 import com.example.IoTBackend.Service.api.SensorService;
@@ -7,6 +8,8 @@ import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.stereotype.Repository;
@@ -18,7 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-@Service
+@Service("sensorService")
 @Transactional
 public class SensorServiceImpl implements SensorService {
 
@@ -54,4 +57,11 @@ public class SensorServiceImpl implements SensorService {
         Optional<Sensor> optional=sensorRepositoty.findByIdAndSecret(id,secret);
         return optional.isPresent();
     }
+
+    @Override
+    public Optional<SensorShortInfo> getSensorInfo(Long id) {
+        return sensorRepositoty.findById(id)
+                .map(SensorShortInfo::fromSensor);
+    }
+
 }

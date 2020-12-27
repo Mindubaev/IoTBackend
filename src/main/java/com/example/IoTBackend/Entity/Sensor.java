@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.IoTBackend.Entity;
 
 import lombok.AllArgsConstructor;
@@ -13,16 +8,7 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,8 +36,10 @@ public class Sensor implements Serializable{
     )
     private List<Person> persons;
 
+    @Column(name = "minTemp")
     private Integer minTemp;
 
+    @Column(name = "maxTemp")
     private Integer maxTemp;
 
 }

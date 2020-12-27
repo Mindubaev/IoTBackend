@@ -1,6 +1,6 @@
 syntax="proto3";
 option java_multiple_files = true;
-package com.example.IoTBackend.gRPC.api;
+package  com.example.iot.gRPC.api;
 
 message RegRequest{
   string secret=1;
@@ -17,6 +17,8 @@ message AuthRequest{
 
 message AuthResponse{
   bool authorized=1;
+  int32 maxTemp=2;
+  int32 minTemp=3;
 }
 
 service AuthService{
